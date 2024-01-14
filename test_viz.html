@@ -1,0 +1,38 @@
+<script type="module">
+  import {instance} from './node_modules/@viz-js/viz/lib/viz-standalone.mjs';
+  const test = `
+  digraph Rewriterule36 {
+    label="Rewrite rule 36";
+    subgraph cluster_From {
+        style=filled;
+        label="From";
+        2 [label="+"];
+        2 -> 12964337;
+        2 -> 6249715;
+        6249715 [label="grade"];
+        6249715 -> 6249716;
+        6249715 -> 6249717;
+        6249717 [label="$1"];
+        6249716 [label="$0"];
+        12964337 [label="grade"];
+        12964337 -> 12964339;
+        12964337 -> 16308325;
+        16308325 [label="$1"];
+        12964339 [label="-"];
+        12964339 -> 22265176;
+        22265176 [label="$0"];
+    }
+    subgraph cluster_To {
+        style=filled;
+        label="To";
+        15373758 [label="0"];
+    }
+}
+  `;
+  async function main() {
+    const viz = await instance();
+    document.body.appendChild(viz.renderSVGElement("digraph { a -> b }"));
+    document.body.appendChild(viz.renderSVGElement(test));
+  }
+  window.onload = main;
+</script>

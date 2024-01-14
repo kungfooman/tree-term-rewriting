@@ -72,31 +72,30 @@ const trs = parseTrs([
     ["$x + $c = $y + $c", "$x = $y"],
     ["$x * $c = $y * $c", "$x = $y"],
     ["$x = $x", "true"],
-])
-
-const input: EulerTree = makeEulerTree(parseExpression("~grade(a, 0) + grade(~grade(b, 2), 0) = grade(a, 0)"))
-
-const newTrs = kb.complete(trs)
-
+]);
+const input: EulerTree = makeEulerTree(parseExpression("~grade(a, 0) + grade(~grade(b, 2), 0) = grade(a, 0)"));
+const newTrs = kb.complete(trs);
+export const graphs1 = [];
 for (let i = 0; i < newTrs.rules.length; i++) {
-    const rule = newTrs.rules[i]
-    const dot = new Dot(`Rewrite rule ${i}`)
-    dot.addTree("From", treeFromEulerTree(rule.from))
-    dot.addTree("To", treeFromEulerTree(rule.to))
-    console.log(i, `https://dreampuf.github.io/GraphvizOnline/#${encodeURIComponent(dot.text)}`)
+    const rule = newTrs.rules[i];
+    const dot = new Dot(`Rewrite rule ${i}`);
+    dot.addTree("From", treeFromEulerTree(rule.from));
+    dot.addTree("To", treeFromEulerTree(rule.to));
+    graphs1.push(dot.text);
+    // console.log(i, `https://dreampuf.github.io/GraphvizOnline/#${encodeURIComponent(dot.text)}`);
 }
-
+export const graphs2 = [];
 for (let i = 0; i < newTrs.equations.length; i++) {
-    const equation = newTrs.equations[i]
-    const dot = new Dot(`Equation ${i}`)
-    dot.addTree("Lhs", treeFromEulerTree(equation.lhs))
-    dot.addTree("Rhs", treeFromEulerTree(equation.rhs))
-    console.log(i, `https://dreampuf.github.io/GraphvizOnline/#${encodeURIComponent(dot.text)}`)
+    const equation = newTrs.equations[i];
+    const dot = new Dot(`Equation ${i}`);
+    dot.addTree("Lhs", treeFromEulerTree(equation.lhs));
+    dot.addTree("Rhs", treeFromEulerTree(equation.rhs));
+    graphs2.push(dot.text);
+    // console.log(i, `https://dreampuf.github.io/GraphvizOnline/#${encodeURIComponent(dot.text)}`);
 }
-
-const simplified = applyRules(input, newTrs, lpo)
-simplified.indexChain = simplified.indexChain.map(idx => idx + 10000)
-const dot = new Dot(`Simplify equation`)
-dot.addTree("Input", treeFromEulerTree(input))
-dot.addTree("Simplified", treeFromEulerTree(simplified))
-console.log(`Simplified: https://dreampuf.github.io/GraphvizOnline/#${encodeURIComponent(dot.text)}`)
+const simplified = applyRules(input, newTrs, lpo);
+simplified.indexChain = simplified.indexChain.map(idx => idx + 10000);
+const dot = new Dot(`Simplify equation`);
+dot.addTree("Input", treeFromEulerTree(input));
+dot.addTree("Simplified", treeFromEulerTree(simplified));
+console.log(`Simplified: https://dreampuf.github.io/GraphvizOnline/#${encodeURIComponent(dot.text)}`);

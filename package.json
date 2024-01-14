@@ -24,7 +24,9 @@
     "trs",
     "lpo"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "@viz-js/viz": "^3.2.4"
+  },
   "scripts": {
     "build": "npm run gen-parser && tsc",
     "test": "npm run build && mocha",
