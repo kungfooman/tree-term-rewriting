@@ -1,5 +1,5 @@
 import {instance} from './node_modules/@viz-js/viz/lib/viz-standalone.mjs';
-import {graphs1, graphs2} from './examples/ga.js';
+import * as GA from './examples/ga.js';
 export const viz = await instance();
 async function start() {
   for (const graph of graphs1) {
@@ -17,8 +17,21 @@ const buttonStart = document.createElement('button');
 buttonStart.textContent = 'Start';
 buttonStart.onclick = start;
 document.body.append(buttonStart, document.createElement('hr'));
+function live() {
+  const input = document.createElement('input');
+  input.style.width = '90vw';
+  input.value = '~grade(a, 0) + grade(~grade(b, 2), 0) = grade(a, 0)';
+  const div = document.createElement('div');
+  input.oninput = () => {
+    div.innerHTML = '';
+    const {dot} = GA.simplifyGA(input.value);
+    div.append(viz.renderSVGElement(dot.text));
+  }
+  input.oninput();
+  document.body.append('Input:', input, div);
+}
+live();
 Object.assign(window, {
   viz,
-  graphs1,
-  graphs2
+  ...GA
 });

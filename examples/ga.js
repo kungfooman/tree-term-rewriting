@@ -77,8 +77,6 @@ const trs = parseTrs([
     ["$x * $c = $y * $c", "$x = $y"],
     ["$x = $x", "true"],
 ]);
-/** @type {EulerTree} */
-const input = makeEulerTree(parseExpression("~grade(a, 0) + grade(~grade(b, 2), 0) = grade(a, 0)"));
 const newTrs = kb.complete(trs);
 /** @type {string[]} */
 export const graphs1 = [];
@@ -100,9 +98,20 @@ for (let i = 0; i < newTrs.equations.length; i++) {
     graphs2.push(dot.text);
     // console.log(i, `https://dreampuf.github.io/GraphvizOnline/#${encodeURIComponent(dot.text)}`);
 }
-const simplified = applyRules(input, newTrs, lpo);
-simplified.indexChain = simplified.indexChain.map(idx => idx + 10000);
-const dot = new Dot(`Simplify equation`);
-dot.addTree("Input", treeFromEulerTree(input));
-dot.addTree("Simplified", treeFromEulerTree(simplified));
-console.log(`Simplified: https://dreampuf.github.io/GraphvizOnline/#${encodeURIComponent(dot.text)}`);
+/**
+ * @example
+ * const {dot} = simplifyGA('~grade(a, 0) + grade(~grade(b, 2), 0) = grade(a, 0)');
+ * document.body.append(viz.renderSVGElement(dot.text));
+ * @param {string} str - The input string.
+ */
+export function simplifyGA(str) {
+    const treeNode = parseExpression(str);
+    const input = makeEulerTree(treeNode);
+    const simplified = applyRules(input, newTrs, lpo);
+    simplified.indexChain = simplified.indexChain.map(idx => idx + 10000);
+    const dot = new Dot(`Simplify equation`);
+    dot.addTree("Input", treeFromEulerTree(input));
+    dot.addTree("Simplified", treeFromEulerTree(simplified));
+    // console.log(`Simplified: https://dreampuf.github.io/GraphvizOnline/#${encodeURIComponent(dot.text)}`);
+    return {treeNode, input, simplified, dot};
+}
