@@ -2,7 +2,8 @@
   "compilerOptions": {
     "target": "ES2021",
     "module": "ESNext",
-    "outDir": "./dist",
+    "outDir": "dist",
+    "rootDirs": ["src", "integration-tests"],
     "strict": true,
     "skipLibCheck": true,
     "esModuleInterop": true,

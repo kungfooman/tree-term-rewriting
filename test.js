@@ -1,5 +1,5 @@
 import {instance} from './node_modules/@viz-js/viz/lib/viz-standalone.mjs';
-import {graphs1, graphs2} from './dist/examples/ga.js';
+import {graphs1, graphs2} from './examples/ga.js';
 export const viz = await instance();
 async function start() {
   for (const graph of graphs1) {

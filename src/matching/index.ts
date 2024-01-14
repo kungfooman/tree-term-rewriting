@@ -1,1 +1,1 @@
-export * from "./ahocorasick"
+export * from "./ahocorasick.js";
