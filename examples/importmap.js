@@ -8,7 +8,7 @@ function importFile(content) {
   return "data:text/javascript;base64," + btoa(content);
 }
 const imports = {
-  "tree-term-rewriting"   : './dist/src/index.js',
+  "tree-term-rewriting"   : '../dist/src/index.js',
   "fs": importFile("export default {};"),
 };
 const importmap = document.createElement("script");

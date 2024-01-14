@@ -1,8 +1,9 @@
-import {instance} from './node_modules/@viz-js/viz/lib/viz-standalone.mjs';
-import * as GA from './examples/ga.js';
+import {instance} from '../node_modules/@viz-js/viz/lib/viz-standalone.mjs';
+import * as GA from './ga.js';
+import * as TTR from 'tree-term-rewriting';
 export const viz = await instance();
 async function start() {
-  for (const graph of graphs1) {
+  for (const graph of GA.graphs1) {
     const button = document.createElement('button');
     button.textContent = "console.log(graph)";
     button.onclick = () => {
@@ -33,5 +34,6 @@ function live() {
 live();
 Object.assign(window, {
   viz,
-  ...GA
+  ...GA,
+  ...TTR,
 });
