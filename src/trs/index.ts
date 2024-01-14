@@ -1,2 +1,2 @@
-export * from "./rewrite"
-export * from "./trs"
+export * from "./rewrite.js";
+export * from "./trs.js";

@@ -1,5 +1,5 @@
-import { depthFirst, TreeNode } from "./tree"
-import { forEach } from "../generatorutil"
+import { depthFirst, TreeNode } from "./tree.js";
+import { forEach } from "../generatorutil.js";
 
 export class Dot {
     private _text = ""
@@ -28,4 +28,3 @@ export class Dot {
         return `${this._text}}`
     }
 }
-

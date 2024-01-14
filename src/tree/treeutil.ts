@@ -1,4 +1,4 @@
-import { EulerTree } from "./tree"
+import { EulerTree } from "./tree.js";
 
 export function replaceVariables(tree: EulerTree): EulerTree {
     const replaced = { ...tree }

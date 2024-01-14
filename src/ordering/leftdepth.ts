@@ -1,5 +1,5 @@
-import { EulerTree, makeEulerTree, TreeNode } from "../tree/tree";
-import { Ordering } from "./ordering";
+import { EulerTree, makeEulerTree, TreeNode } from "../tree/tree.js";
+import { Ordering } from "./ordering.js";
 
 export class LeftDepthOrdering extends Ordering {
     greaterThan(a: TreeNode, b: TreeNode): boolean {

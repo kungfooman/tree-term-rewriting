@@ -1,10 +1,10 @@
-import { expect } from "chai"
-import { KnuthBendixCompletion } from "../src/completion"
-import { LexicographicPathOrdering } from "../src/ordering"
-import { parseEulerRewriteRule, parseExpression } from "../src/parsing/parser"
-import { makeEulerTree, treeFromEulerTree } from "../src/tree/tree"
-import { sequenceEqual } from "../src/util"
-import { applyRules, TermRewriteSystem } from "../src/trs"
+import { expect } from "chai";
+import { KnuthBendixCompletion } from "../src/completion/index.js";
+import { LexicographicPathOrdering } from "../src/ordering/index.js";
+import { parseEulerRewriteRule, parseExpression } from "../src/parsing/parser.js";
+import { makeEulerTree, treeFromEulerTree } from "../src/tree/tree.js";
+import { sequenceEqual } from "../src/util.js";
+import { applyRules, TermRewriteSystem } from "../src/trs/index.js";
 
 describe("integration", () => {
     const lpo = new LexicographicPathOrdering(["~", "-", "!", "grade", "*", "^", "+", "="])

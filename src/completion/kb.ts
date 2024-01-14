@@ -1,10 +1,18 @@
-import { EulerTree, eulerTreePatternMatch, eulerTreeSubstitute, depthFirst, makeEulerTree, treeFromEulerTree, TreeNode, equationUrl, ruleUrl, replaceVariables, postfixVariables, makePostfixesVariables } from "../tree"
-import { pairPermutations, sequenceEqual } from "../util"
-import { any, first, flatMap } from "../generatorutil"
-import { Ordering } from "../ordering"
-import { Completion } from "./completion"
-import { applyChange, applyRules, getTrsRules, makeEquationVariablesCanonical, makeRuleVariablesCanonical, rewrite, TermRewriteSystem, TermRewriteSystemChange, trsEqual } from "../trs"
-
+import {
+    EulerTree, eulerTreePatternMatch, eulerTreeSubstitute,
+    depthFirst, makeEulerTree, treeFromEulerTree,
+    TreeNode, equationUrl, ruleUrl, replaceVariables,
+    postfixVariables, makePostfixesVariables
+} from "../tree/index.js";
+import { pairPermutations, sequenceEqual } from "../util.js";
+import { any, first, flatMap } from "../generatorutil.js";
+import { Ordering } from "../ordering/index.js";
+import { Completion } from "./completion.js";
+import {
+    applyChange, applyRules, getTrsRules, makeEquationVariablesCanonical,
+    makeRuleVariablesCanonical, rewrite, TermRewriteSystem,
+    TermRewriteSystemChange, trsEqual
+} from "../trs/index.js";
 
 export type CriticalPair = [EulerTree, EulerTree]
 

@@ -1,6 +1,6 @@
-import { Ordering } from "./ordering"
-import { any } from "../generatorutil"
-import { depthFirst, TreeNode } from "../tree/tree"
+import { Ordering } from "./ordering.js";
+import { any } from "../generatorutil.js";
+import { depthFirst, TreeNode } from "../tree/tree.js";
 
 export class LexicographicPathOrdering extends Ordering {
     constructor(private readonly symbols: string[]) {

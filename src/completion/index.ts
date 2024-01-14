@@ -1,2 +1,2 @@
-export * from "./completion"
-export * from "./kb"
+export * from "./completion.js";
+export * from "./kb.js";

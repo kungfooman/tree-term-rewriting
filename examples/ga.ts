@@ -1,9 +1,9 @@
-import { Dot } from "../src/tree"
-import { KnuthBendixCompletion } from "../src/completion"
-import { LexicographicPathOrdering } from "../src/ordering"
-import { parseExpression } from "../src/parsing/parser"
-import { EulerTree, makeEulerTree, treeFromEulerTree } from "../src/tree/tree"
-import { applyRules, TermRewriteSystem } from "../src/trs"
+import { Dot } from "../src/tree/index.js";
+import { KnuthBendixCompletion } from "../src/completion/index.js";
+import { LexicographicPathOrdering } from "../src/ordering/index.js";
+import { parseExpression } from "../src/parsing/parser.js";
+import { EulerTree, makeEulerTree, treeFromEulerTree } from "../src/tree/tree.js";
+import { applyRules, TermRewriteSystem } from "../src/trs/index.js";
 
 const lpo = new LexicographicPathOrdering(["~", "-", "!", "grade", "*", "^", "+", "="])
 const kb = new KnuthBendixCompletion(lpo)

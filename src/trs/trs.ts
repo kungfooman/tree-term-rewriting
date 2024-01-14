@@ -1,5 +1,5 @@
-import { EulerTree, TreeNode } from "../tree/tree"
-import { sequenceEqual } from "../util"
+import { EulerTree, TreeNode } from "../tree/tree.js";
+import { sequenceEqual } from "../util.js";
 
 export type RewriteRule = { from: TreeNode, to: TreeNode }
 export type EulerRewriteRule = { from: EulerTree, to: EulerTree, applicationMustSimplify?: boolean }

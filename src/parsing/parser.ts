@@ -1,6 +1,6 @@
-import { Additive, ASTKinds, Constant, Equality, Expression, FunctionApplication, FunctionCall, Multiplicative, parse, Primary, Unary, Variable } from "./__generated__/math"
-import { makeEulerTree, TreeNode } from "../tree/tree"
-import { EulerRewriteRule, RewriteRule } from "../trs"
+import { Additive, ASTKinds, Constant, Equality, Expression, FunctionApplication, FunctionCall, Multiplicative, parse, Primary, Unary, Variable } from "./__generated__/math.js"
+import { makeEulerTree, TreeNode } from "../tree/tree.js"
+import { EulerRewriteRule, RewriteRule } from "../trs/index.js"
 
 function astToTree(root: Expression): TreeNode {
     let nextNodeIndex = 0

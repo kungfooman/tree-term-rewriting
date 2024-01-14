@@ -1,6 +1,6 @@
-import { Dot } from "./dot"
-import { EulerTree, treeFromEulerTree } from "./tree"
-import { TRSEquation, TRSRule } from "../trs"
+import { Dot } from "./dot.js"
+import { EulerTree, treeFromEulerTree } from "./tree.js"
+import { TRSEquation, TRSRule } from "../trs/index.js"
 
 export function ruleUrl(rewriteRule: TRSRule) {
     const dot = new Dot("Rewrite rule")

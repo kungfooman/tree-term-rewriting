@@ -1,7 +1,7 @@
-import { Ordering } from "../ordering"
-import { EulerTree, eulerTreeSubstitute, treeFromEulerTree } from "../tree/tree"
-import { sequenceEqual } from "../util"
-import { EulerRewriteRule, getTrsRules, TermRewriteSystem } from "./trs"
+import { Ordering } from "../ordering/index.js";
+import { EulerTree, eulerTreeSubstitute, treeFromEulerTree } from "../tree/tree.js";
+import { sequenceEqual } from "../util.js";
+import { EulerRewriteRule, getTrsRules, TermRewriteSystem } from "./trs.js";
 
 export function applyRules(input: EulerTree, trs: TermRewriteSystem, ordering: Ordering, maxIters?: number): EulerTree {
     let rewritten = {

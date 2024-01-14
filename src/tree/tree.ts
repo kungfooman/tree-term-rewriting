@@ -1,5 +1,5 @@
-import { AhoCorasick } from "../matching/ahocorasick"
-import { sequenceEqual, subsequenceEqual } from "../util"
+import { AhoCorasick } from "../matching/ahocorasick.js";
+import { sequenceEqual, subsequenceEqual } from "../util.js";
 
 export type TreeNode = {
     index: number
