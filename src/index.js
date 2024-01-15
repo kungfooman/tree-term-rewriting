@@ -2,6 +2,7 @@ export * from './completion/index.js';
 export * from './matching/index.js';
 export * from './ordering/index.js';
 export * from './parsing/index.js';
+// @ts-ignore
 export * from './tree/index.js';
 // @ts-ignore
 export * from './trs/index.js';
