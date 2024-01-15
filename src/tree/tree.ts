@@ -83,7 +83,11 @@ type NumbersFirstLastOccurence = {
     isLast: boolean[]
     lastIndices: Record<number, number>
 }
-
+/**
+ * @todo optimize this function...
+ * @param ns 
+ * @returns {NumbersFirstLastOccurence}
+ */
 function numbersFirstLastOccurence(ns: number[]): NumbersFirstLastOccurence {
     const seen = new Set<number>() // whether a number has been seen before
     const isFirst: boolean[] = [] // whether each number is the first occurence
