@@ -1,4 +1,4 @@
-import { Ordering } from "../ordering/index.js";
+import {Ordering                              } from "../ordering/index.js";
 import {eulerTreeSubstitute, treeFromEulerTree} from '../tree/tree.js';
 import {sequenceEqual                         } from '../util.js';
 import {getTrsRules                           } from './trs.js';
