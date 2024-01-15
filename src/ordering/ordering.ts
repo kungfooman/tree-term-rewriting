@@ -1,4 +1,4 @@
-import { TreeNode } from "../tree/tree";
+import { TreeNode } from "../tree/tree.js";
 
 export abstract class Ordering {
     abstract greaterThan(a: TreeNode, b: TreeNode): boolean
