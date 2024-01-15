@@ -30,15 +30,12 @@ function termInstanceOf(a, b) {
     const firstMatch = eulerTreePatternMatch(aWithoutVariables, b).next();
     return !firstMatch.done;
 }
-/**
- * @todo Remove interfaces, keep proper prototype chain.
- * @implements {Completion}
- */
-export class KnuthBendixCompletion {
+export class KnuthBendixCompletion extends Completion {
     /**
      * @param {Ordering} ordering 
      */
     constructor(ordering) {
+        super();
         this.ordering = ordering;
     }
     /**
