@@ -6,8 +6,8 @@ import {
  * @typedef {import('tree-term-rewriting').EulerTree} EulerTree
  * @typedef {import('tree-term-rewriting').TermRewriteSystem} TermRewriteSystem
  */
-const lpo = new LexicographicPathOrdering(["~", "-", "!", "grade", "*", "^", "+", "="])
-const kb = new KnuthBendixCompletion(lpo)
+export const lpo = new LexicographicPathOrdering(["~", "-", "!", "grade", "*", "^", "+", "="])
+export const kb = new KnuthBendixCompletion(lpo)
 /**
  * @param {[string, string][]} equationStrs 
  * @returns {TermRewriteSystem}
@@ -34,8 +34,7 @@ function parseTrs(equationStrs) {
 
     return trs
 }
-
-const trs = parseTrs([
+export const trs = parseTrs([
     ["grade($x, 0) + grade($y, 0)", "grade($x + $y, 0)"], // grade 0 distr
     ["grade($x, 2) + grade($y, 2)", "grade($x + $y, 2)"], // grade 2 distr
     ["grade(0, $n)", "0"],
@@ -77,34 +76,14 @@ const trs = parseTrs([
     ["$x * $c = $y * $c", "$x = $y"],
     ["$x = $x", "true"],
 ]);
-const newTrs = kb.complete(trs);
-/** @type {string[]} */
-export const graphs1 = [];
-for (let i = 0; i < newTrs.rules.length; i++) {
-    const rule = newTrs.rules[i];
-    const dot = new Dot(`Rewrite rule ${i}`);
-    dot.addTree("From", treeFromEulerTree(rule.from));
-    dot.addTree("To", treeFromEulerTree(rule.to));
-    graphs1.push(dot.text);
-    // console.log(i, `https://dreampuf.github.io/GraphvizOnline/#${encodeURIComponent(dot.text)}`);
-}
-/** @type {string[]} */
-export const graphs2 = [];
-for (let i = 0; i < newTrs.equations.length; i++) {
-    const equation = newTrs.equations[i];
-    const dot = new Dot(`Equation ${i}`);
-    dot.addTree("Lhs", treeFromEulerTree(equation.lhs));
-    dot.addTree("Rhs", treeFromEulerTree(equation.rhs));
-    graphs2.push(dot.text);
-    // console.log(i, `https://dreampuf.github.io/GraphvizOnline/#${encodeURIComponent(dot.text)}`);
-}
 /**
  * @example
  * const {dot} = simplifyGA('~grade(a, 0) + grade(~grade(b, 2), 0) = grade(a, 0)');
  * document.body.append(viz.renderSVGElement(dot.text));
+ * @param {TermRewriteSystem} newTrs - The term rewrite system.
  * @param {string} str - The input string.
  */
-export function simplifyGA(str) {
+export function simplifyGA(newTrs, str) {
     const treeNode = parseExpression(str);
     const input = makeEulerTree(treeNode);
     const simplified = applyRules(input, newTrs, lpo);
